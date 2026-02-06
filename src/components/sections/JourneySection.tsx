@@ -1,12 +1,14 @@
+import { useEffect, useState, useRef } from "react";
+
 const timelineItems = [
   {
-    year: "2008-2018",
+    year: "2008–2018",
     title: "Foundation & Specialization",
     description:
       "Started in import business focusing on woodworking machinery and plywood raw materials. Built deep expertise in specific product categories.",
   },
   {
-    year: "2018-2024",
+    year: "2018–2024",
     title: "Evolution to E-Commerce",
     description:
       "Adapted to rapid e-commerce growth, expanding to multi-category sourcing. Partnered with Amazon sellers and D2C brands.",
@@ -19,55 +21,128 @@ const timelineItems = [
   },
 ];
 
+// 👇 Clone first & last for infinite effect
+const slides = [
+  timelineItems[timelineItems.length - 1],
+  ...timelineItems,
+  timelineItems[0],
+];
+
 export function JourneySection() {
+  const [current, setCurrent] = useState(1);
+  const [transition, setTransition] = useState(true);
+  const sliderRef = useRef();
+
+  // ✅ Auto slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => prev + 1);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // ✅ Handle infinite reset (invisible)
+  useEffect(() => {
+    if (current === slides.length - 1) {
+      setTimeout(() => {
+        setTransition(false);
+        setCurrent(1);
+      }, 700);
+    }
+
+    if (current === 0) {
+      setTimeout(() => {
+        setTransition(false);
+        setCurrent(slides.length - 2);
+      }, 700);
+    }
+
+    setTimeout(() => setTransition(true), 50);
+  }, [current]);
+
   return (
-    <section className="section-padding bg-navy-dark text-white">
+    <section className="py-24 bg-navy-dark text-white">
       <div className="container mx-auto px-4">
+
+        {/* Heading */}
         <div className="text-center mb-16">
-          <span className="text-gold font-medium uppercase tracking-wider text-sm">
+          <span className="text-gold uppercase tracking-widest text-sm">
             Our Story
           </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl mt-2 mb-4">
+          <h2 className="font-heading text-3xl md:text-5xl mt-3">
             Our Journey
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <p className="text-white/60 mt-3">
             From specialized expertise to global trade partnership
           </p>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gold/30 transform md:-translate-x-1/2" />
-
-          {/* Timeline Items */}
-          <div className="space-y-12">
+        {/* Desktop unchanged */}
+        <div className="hidden md:block relative max-w-6xl mx-auto">
+          <div className="absolute top-7 left-0 right-0 h-[1px] bg-gold/30" />
+          <div className="grid md:grid-cols-3 gap-14 relative">
             {timelineItems.map((item, index) => (
-              <div
-                key={index}
-                className={`relative flex flex-col md:flex-row gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-gold transform -translate-x-1/2 mt-8 z-10" />
-
-                {/* Content */}
-                <div className={`flex-1 pl-20 md:pl-0 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}>
-                  <span className="inline-block px-4 py-1 bg-gold text-navy-dark text-sm font-bold rounded-full mb-4">
-                    {item.year}
-                  </span>
-                  <h3 className="font-heading text-2xl font-bold mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-white/70">{item.description}</p>
+              <div key={index} className="text-center relative">
+                <div className="w-4 h-4 bg-gold rounded-full mx-auto mb-6 shadow-gold" />
+                <div className="text-gold text-sm font-semibold mb-3 tracking-wider">
+                  {item.year}
                 </div>
-
-                {/* Spacer for alternating layout */}
-                <div className="hidden md:block flex-1" />
+                <h3 className="font-heading text-xl mb-3">{item.title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed max-w-xs mx-auto">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
+
+        {/* ✅ Mobile Infinite Carousel */}
+        <div className="md:hidden relative max-w-sm mx-auto overflow-hidden">
+          <div
+            ref={sliderRef}
+            className="flex"
+            style={{
+              transform: `translateX(-${current * 100}%)`,
+              transition: transition ? "transform 0.7s ease-in-out" : "none",
+            }}
+          >
+            {slides.map((item, index) => (
+              <div key={index} className="min-w-full px-4">
+                <div className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl p-8 shadow-lg">
+                  <div className="w-3 h-3 bg-gold rounded-full mb-6" />
+
+                  <div className="text-gold text-sm font-semibold mb-3 tracking-wider">
+                    {item.year}
+                  </div>
+
+                  <h3 className="font-heading text-xl mb-3">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-6">
+            {timelineItems.map((_, i) => (
+              <div
+                key={i}
+                className={`h-2 rounded-full transition-all ${
+                  i === (current - 1 + timelineItems.length) % timelineItems.length
+                    ? "bg-gold w-6"
+                    : "bg-white/30 w-2"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
