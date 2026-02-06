@@ -137,28 +137,59 @@ export function Header() {
         </div>
       </header>
 
-      {/* ================= MOBILE MENU ================= */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-[90px] px-6 lg:hidden overflow-y-auto">
-          <nav className="flex flex-col gap-5 text-lg font-semibold text-navy-dark pb-10">
-            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="border-b pb-3">Home</Link>
-            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="border-b pb-3">About</Link>
-            <Link to="/products" onClick={() => setIsMobileMenuOpen(false)} className="border-b pb-3">Products</Link>
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="border-b pb-3">Contact</Link>
+  <div className="fixed inset-0 bg-white z-40 pt-[100px] px-6 lg:hidden overflow-y-auto">
+    <nav className="flex flex-col gap-8 text-navy-dark pb-16">
 
-            <div className="pt-4 border-t">
-              <p className="mb-3 text-base">Services</p>
-              <div className="flex flex-col gap-2 text-base">
-                <Link to="/services/global-sourcing" onClick={() => setIsMobileMenuOpen(false)}>Global Sourcing</Link>
-                <Link to="/services/export-management" onClick={() => setIsMobileMenuOpen(false)}>Export Management</Link>
-                <Link to="/services/import-compliance" onClick={() => setIsMobileMenuOpen(false)}>Import Compliance</Link>
-                <Link to="/services/logistics-freight" onClick={() => setIsMobileMenuOpen(false)}>Logistics & Freight</Link>
-                <Link to="/services/quality-inspection" onClick={() => setIsMobileMenuOpen(false)}>Quality Inspection</Link>
-              </div>
-            </div>
-          </nav>
+      {/* Main Links */}
+      <div className="flex flex-col gap-6 text-[20px] font-semibold">
+        {[
+          ["Home", "/"],
+          ["About", "/about"],
+          ["Products", "/products"],
+          ["Contact", "/contact"],
+        ].map(([label, href]) => (
+          <Link
+            key={href}
+            to={href}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="border-b border-[#e8dccb] pb-4"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Services Section */}
+      <div>
+        <p className="text-[15px] tracking-wider text-[#9b7b5a] mb-4 uppercase">
+          Services
+        </p>
+
+        <div className="flex flex-col gap-4 text-[17px] font-medium">
+          {[
+            ["Global Sourcing","/services/global-sourcing"],
+            ["Export Management","/services/export-management"],
+            ["Import Compliance","/services/import-compliance"],
+            ["Logistics & Freight","/services/logistics-freight"],
+            ["Quality Inspection","/services/quality-inspection"],
+          ].map(([label, href]) => (
+            <Link
+              key={href}
+              to={href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-2 border-l-2 border-[#E9D8C3]"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
+
+    </nav>
+  </div>
+)}
+
     </>
   );
 }
