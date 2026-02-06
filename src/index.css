@@ -224,19 +224,30 @@
     }
   }
 
-  /* Marquee Animation */
-  .marquee {
-    animation: marquee 30s linear infinite;
-  }
+  /* ===== Smooth Infinite Marquee (Correct) ===== */
 
-  @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 28s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Faster on mobile, but still smooth */
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 14s;
+  }
+}
+
 
   /* Fade In Up Animation */
   .fade-in-up {
