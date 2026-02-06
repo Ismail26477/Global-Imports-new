@@ -59,7 +59,7 @@ export function HeroSlider() {
   };
 
   return (
-    <section className="relative h-[60vh] sm:h-[75vh] md:h-screen min-h-[480px] overflow-hidden">
+    <section className="relative h-[75vh] sm:h-[75vh] md:h-screen overflow-hidden">
 
       {/* SLIDER */}
       <div
@@ -72,45 +72,44 @@ export function HeroSlider() {
             className="w-full h-full flex-shrink-0 bg-cover bg-center relative"
             style={{ backgroundImage: `url(${slide.image})` }}
           >
-            {/* Warm cinematic overlay */}
-<div className="absolute inset-0 bg-black/35" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
         ))}
       </div>
 
       {/* CONTENT */}
-      <div className="absolute inset-0 z-10 flex items-center">
-        <div className="container mx-auto px-4 sm:px-5">
-          <div className="max-w-3xl">
+<div className="absolute inset-0 z-10 flex items-end pb-28 sm:items-center sm:pb-0">
+  <div className="container mx-auto px-4">
+    <div className="w-full sm:max-w-2xl">
 
             {/* Badge */}
-            <span className="inline-block px-3 py-1 bg-[#D6A85A]/20 text-[#D6A85A] rounded-full text-xs sm:text-sm font-medium mb-4">
+            <span className="inline-block px-2 py-1 bg-[#D6A85A]/20 text-[#D6A85A] rounded-full text-[11px] sm:text-sm font-medium mb-3">
               Trusted by 500+ Businesses
             </span>
 
             {/* Heading */}
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-6xl mb-6 leading-tight text-[#F8F5EE]">
-              {slides[current].slogan}
-            </h1>
+<h1 className="font-heading text-3xl sm:text-4xl md:text-6xl mb-4 leading-tight text-[#F8F5EE]">
+  {slides[current].slogan}
+</h1>
 
-            {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-[#E6D8C7] mb-8 max-w-2xl transition-all duration-700">
-              {slides[current].description}
-            </p>
+{/* Description */}
+<p className="text-base sm:text-lg md:text-xl text-[#E6D8C7] mb-6">
+  {slides[current].description}
+</p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="bg-[#6B4A2F] hover:bg-[#5a3d26] text-[#FFF9F0] px-8 py-6 text-base"
+                className="bg-[#6B4A2F] hover:bg-[#5a3d26] text-[#FFF9F0] px-6 py-4 text-sm"
               >
                 Request a Quote
-                <ArrowRight className="w-5 h-5 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
 
               <Button
                 onClick={() => scrollToSection("#products")}
-                className="bg-white hover:bg-white/90 text-[#6B4A2F] px-8 py-6 text-base"
+                className="bg-white hover:bg-white/90 text-[#6B4A2F] px-6 py-4 text-sm"
               >
                 View Products
               </Button>
@@ -122,14 +121,14 @@ export function HeroSlider() {
       {/* Stats Bar */}
       <div className="absolute bottom-0 left-0 right-0">
         <div className="container mx-auto px-4">
-          <div className="backdrop-blur-md bg-white/70 rounded-t-2xl py-5 px-8">
-            <div className="grid grid-cols-3 gap-6 text-center">
+          <div className="backdrop-blur-md bg-white/80 rounded-t-xl py-3 px-4">
+            <div className="grid grid-cols-3 gap-2 text-center">
               {stats.map((stat, index) => (
                 <div key={index}>
-                  <div className="font-heading text-3xl font-bold text-[#6B4A2F]">
+                  <div className="font-heading text-xl sm:text-3xl font-bold text-[#6B4A2F]">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-[#6B4A2F]/70">
+                  <div className="text-[11px] sm:text-sm text-[#6B4A2F]/70">
                     {stat.label}
                   </div>
                 </div>
