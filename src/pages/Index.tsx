@@ -14,8 +14,10 @@ import { Footer } from "../components/Footer";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { ChatBot } from "../components/ChatBot";
 import { ContactPopup } from "../components/ContactPopup";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 const Index = () => {
+  useScrollAnimation();
   return (
     <div className="min-h-screen bg-background">
       <Header />

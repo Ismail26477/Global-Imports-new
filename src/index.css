@@ -150,20 +150,45 @@
   /* Gold Gradient Button */
   .btn-gold {
     @apply bg-gradient-to-r from-[hsl(26,24%,60%)] to-[hsl(26,42%,35%)] text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300;
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-gold:hover {
-    @apply shadow-xl transform -translate-y-0.5;
+    @apply shadow-xl transform -translate-y-1;
     background: linear-gradient(to right, hsl(26, 24%, 70%), hsl(26, 42%, 45%));
+  }
+
+  .btn-gold:active {
+    @apply transform -translate-y-0;
   }
 
   /* Navy Button */
   .btn-navy {
     @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-lg shadow-lg transition-all duration-300;
+    position: relative;
+    overflow: hidden;
   }
 
   .btn-navy:hover {
-    @apply shadow-xl transform -translate-y-0.5 opacity-90;
+    @apply shadow-xl transform -translate-y-1 opacity-90;
+  }
+
+  .btn-navy:active {
+    @apply transform -translate-y-0;
+  }
+
+  /* Enhanced Button Hover Effects */
+  button, [role="button"] {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  button:hover, [role="button"]:hover {
+    @apply shadow-md;
+  }
+
+  button:active, [role="button"]:active {
+    @apply transform scale-95;
   }
 
   /* Card Hover Effect */
@@ -222,6 +247,58 @@
     100% {
       box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
+  }
+
+  /* Scroll-triggered Fade In Up */
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Scroll Slide In Left */
+  .scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-slide-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scroll Slide In Right */
+  .scroll-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-slide-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Scroll Scale In */
+  .scroll-scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scroll-scale-in.is-visible {
+    opacity: 1;
+    transform: scale(1);
   }
 
   /* ===== Smooth Infinite Marquee (Correct) ===== */

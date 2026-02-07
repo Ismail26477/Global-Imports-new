@@ -114,7 +114,8 @@ export function ProductsSection() {
             <div
               key={index}
               onClick={() => setSelectedCategory(category)}
-              className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm card-hover"
+              className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm card-hover scroll-scale-in"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="relative h-32 md:h-48 overflow-hidden">
                 <img
@@ -183,7 +184,10 @@ export function ProductsSection() {
                 ))}
               </div>
 
-              <Button onClick={scrollToContact} className="w-full btn-gold">
+              <Button 
+                onClick={scrollToContact} 
+                className="w-full btn-gold font-bold tracking-wide"
+              >
                 Request Quote for {selectedCategory.name}
               </Button>
             </div>
