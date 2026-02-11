@@ -101,43 +101,47 @@ export function Footer() {
                 <span>Nagpur, Maharashtra, India</span>
               </div>
 
-              <div className="pt-6 border-t border-[#5A3A22]/20">
-  <h4 className="font-heading font-bold text-base md:text-lg mb-4">
-    Contact Our Team
-  </h4>
+             {/* Contact Our Team - Full Width Premium Section */}
+<div className="mt-16">
+  <div className="bg-[#f5ede4] rounded-2xl px-6 md:px-12 py-10 shadow-inner">
+    <h3 className="text-2xl md:text-3xl font-heading font-bold text-center text-[#5A3A22] mb-10">
+      Contact Our Team
+    </h3>
 
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    {teamContacts.map((contact) => {
-      const initials = contact.name
-        .split(" ")
-        .map((n) => n[0])
-        .join("");
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {teamContacts.map((contact) => {
+        const initials = contact.name
+          .split(" ")
+          .map((n) => n[0])
+          .join("");
 
-      return (
-        <a
-          key={contact.name}
-          href={`tel:${contact.phone.replace(/\s/g, "")}`}
-          className="flex items-center gap-4 bg-white rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-300"
-        >
-          {/* Initial Circle */}
-          <div className="w-10 h-10 rounded-full bg-[#5A3A22] text-white flex items-center justify-center font-bold text-sm shrink-0">
-            {initials}
-          </div>
+        return (
+          <a
+            key={contact.name}
+            href={`tel:${contact.phone.replace(/\s/g, "")}`}
+            className="group bg-white rounded-2xl p-6 flex items-center gap-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          >
+            {/* Initials Circle */}
+            <div className="w-14 h-14 rounded-full bg-[#5A3A22] text-white flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
+              {initials}
+            </div>
 
-          {/* Name + Phone */}
-          <div className="flex flex-col">
-            <span className="font-semibold text-[#5A3A22] text-sm md:text-base">
-              {contact.name}
-            </span>
-            <span className="text-[#5A3A22]/80 text-xs md:text-sm">
-              {contact.phone}
-            </span>
-          </div>
-        </a>
-      );
-    })}
+            {/* Text */}
+            <div>
+              <p className="text-lg font-semibold text-[#5A3A22]">
+                {contact.name}
+              </p>
+              <p className="text-sm text-[#5A3A22]/70">
+                {contact.phone}
+              </p>
+            </div>
+          </a>
+        );
+      })}
+    </div>
   </div>
 </div>
+
 
             </div>
           </div>
