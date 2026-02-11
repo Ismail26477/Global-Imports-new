@@ -32,7 +32,7 @@ export function Header() {
             {/* Logo */}
             <Link to="/">
               <img
-                src="/logo16.png"
+                src="/logo18=.png"
                 alt="Global Imports Logo"
                 className={cn(
                   "object-contain transition-all duration-300",
@@ -122,7 +122,7 @@ export function Header() {
             {/* CENTER — LOGO */}
             <Link to="/" className="absolute left-1/2 -translate-x-1/2">
               <img
-                src="/logo16.png"
+                src="/logo18.png"
                 alt="Global Imports Logo"
                 className="h-18 object-contain"
               />
