@@ -32,7 +32,7 @@ export function Footer() {
           {/* Logo + About */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/logo18.png"
+              src="/logo16.png"
               alt="Global Imports Logo"
               className="h-16 md:h-20 w-auto object-contain mb-4 md:mb-6"
             />
@@ -101,48 +101,20 @@ export function Footer() {
                 <span>Nagpur, Maharashtra, India</span>
               </div>
 
-             {/* Contact Our Team - Full Width Premium Section */}
-<div className="mt-16">
-  <div className="bg-[#f5ede4] rounded-2xl px-6 md:px-12 py-10 shadow-inner">
-    <h3 className="text-2xl md:text-3xl font-heading font-bold text-center text-[#5A3A22] mb-10">
-      Contact Our Team
-    </h3>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {teamContacts.map((contact) => {
-        const initials = contact.name
-          .split(" ")
-          .map((n) => n[0])
-          .join("");
-
-        return (
-          <a
-            key={contact.name}
-            href={`tel:${contact.phone.replace(/\s/g, "")}`}
-            className="group bg-white rounded-2xl p-6 flex items-center gap-5 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-          >
-            {/* Initials Circle */}
-            <div className="w-14 h-14 rounded-full bg-[#5A3A22] text-white flex items-center justify-center text-lg font-bold group-hover:scale-110 transition">
-              {initials}
-            </div>
-
-            {/* Text */}
-            <div>
-              <p className="text-lg font-semibold text-[#5A3A22]">
-                {contact.name}
-              </p>
-              <p className="text-sm text-[#5A3A22]/70">
-                {contact.phone}
-              </p>
-            </div>
-          </a>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
-
+              <div className="pt-3 md:pt-4 border-t border-[#5A3A22]/20">
+                <h4 className="font-medium text-sm md:text-base mb-2">Team Contacts:</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2 text-xs md:text-sm">
+                  {teamContacts.map((contact) => (
+                    <a
+                      key={contact.name}
+                      href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                      className="text-[#5A3A22] hover:text-[#E6C79C] transition-colors duration-300 truncate"
+                    >
+                      {contact.name}: {contact.phone.slice(-10)}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -162,4 +134,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+}, like that i want show in footer like full anme wise so correct my code and give em 
