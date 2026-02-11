@@ -17,10 +17,10 @@ const servicesLinks = [
 ];
 
 const teamContacts = [
-  { name: "Vimal", phone: "+91 9823050721" },
-  { name: "Aakash", phone: "+91 9011675477" },
-  { name: "Prithvi", phone: "+91 8168619911" },
-  { name: "Sagar", phone: "+91 8830783396" },
+  { name: "Vimal Gandhi", phone: "+91 9823050721" },
+  { name: "Aakash Gandhi", phone: "+91 9011675477" },
+  { name: "Prithvi Gandhi", phone: "+91 8168619911" },
+  { name: "Sagar Gandhi", phone: "+91 8830783396" },
 ];
 
 export function Footer() {
