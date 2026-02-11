@@ -31,8 +31,14 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="section-padding world-map-bg">
-      <div className="container mx-auto px-4">
+    <section
+  id="about"
+  className="section-padding relative bg-fixed bg-center bg-cover"
+  style={{
+    backgroundImage: "url('/services/end-to-end-procurement.png')",
+  }}
+>
+<div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div>
