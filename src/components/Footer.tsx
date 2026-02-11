@@ -134,4 +134,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}, like that i want show in footer like full anme wise so correct my code and give em 
+}
