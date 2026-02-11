@@ -15,13 +15,6 @@ const evolution = [
   { label: "Focus", text: "E-commerce & global marketplace sellers" },
 ];
 
-const stats = [
-  { value: "16+", label: "Years in Global Trade" },
-  { value: "Expert", label: "Professional Management" },
-  { value: "Global", label: "China & 50+ Countries" },
-  { value: "Multi", label: "Diverse Solutions" },
-];
-
 export function AboutSection() {
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
@@ -31,7 +24,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative bg-fixed bg-center bg-cover section-padding"
+      className="relative py-20 bg-fixed bg-center bg-cover"
       style={{
         backgroundImage: "url('/services/end-to-end-procurement.png')",
       }}
@@ -39,79 +32,80 @@ export function AboutSection() {
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/70"></div>
 
-      <div className="relative z-10 container mx-auto px-4 text-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          
-          {/* Left Content */}
-          <div>
-            <span className="text-gold font-medium uppercase tracking-wider text-xs sm:text-sm">
-              About Us
-            </span>
+      {/* Glass Container */}
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="backdrop-blur-md bg-white/10 rounded-3xl p-6 md:p-12 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center text-white">
+            
+            {/* LEFT CONTENT */}
+            <div>
+              <span className="text-gold uppercase tracking-wider text-sm">
+                About Us
+              </span>
 
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2 mb-4 sm:mb-6">
-              Your Trusted{" "}
-              <span className="text-gradient-gold">Global Trade Partner</span>
-            </h2>
+              <h2 className="font-heading text-3xl md:text-5xl mt-3 mb-6">
+                Your Trusted Global Trade Partner
+              </h2>
 
-            <p className="text-base sm:text-lg mb-4 sm:mb-6">
-              <strong>Hassle-free Import & Global E-Commerce Sourcing</strong>
-            </p>
+              <p className="text-lg font-semibold mb-3">
+                Hassle-free Import & Global E-Commerce Sourcing
+              </p>
 
-            <p className="text-sm sm:text-base mb-6 sm:mb-8 text-gray-200">
-              We bridge the gap between Indian businesses and global manufacturers,
-              making international trade simple and profitable. With over 16 years
-              of experience, we've helped hundreds of businesses source quality
-              products from trusted suppliers worldwide.
-            </p>
+              <p className="text-gray-200 mb-6">
+                We bridge the gap between Indian businesses and global manufacturers,
+                making international trade simple and profitable. With over 16 years
+                of experience, we've helped hundreds of businesses source quality
+                products from trusted suppliers worldwide.
+              </p>
 
-            <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
-              {highlights.map((highlight, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-gold shrink-0" />
-                  <span>{highlight}</span>
-                </div>
-              ))}
-            </div>
+              <div className="space-y-3 mb-6">
+                {highlights.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-center">
+                    <CheckCircle className="text-gold w-5 h-5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
 
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
-              <h4 className="font-heading font-bold mb-3 sm:mb-4">
-                Our Evolution
-              </h4>
-              <div className="space-y-2 sm:space-y-3">
-                {evolution.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 flex-wrap">
-                    <span className="px-3 py-1 bg-gold text-black text-xs font-medium rounded-full">
+              {/* Evolution Box */}
+              <div className="bg-white/10 p-5 rounded-xl backdrop-blur-md mb-6">
+                <h4 className="font-bold mb-4">Our Evolution</h4>
+                {evolution.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-center mb-2">
+                    <span className="bg-gold text-black px-3 py-1 text-xs rounded-full">
                       {item.label}
                     </span>
                     <span className="text-gray-200 text-sm">{item.text}</span>
                   </div>
                 ))}
               </div>
+
+              <Button onClick={scrollToContact} className="btn-gold">
+                Start Your Trade Journey
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
             </div>
 
-            <Button onClick={scrollToContact} className="btn-gold">
-              Start Your Trade Journey
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            {/* RIGHT IMAGES */}
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d"
+                className="rounded-2xl h-40 object-cover w-full"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3"
+                className="rounded-2xl h-60 object-cover w-full"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1578575437130-527eed3abbec"
+                className="rounded-2xl h-60 object-cover w-full"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1553413077-190dd305871c"
+                className="rounded-2xl h-40 object-cover w-full"
+              />
+            </div>
           </div>
-
-          {/* Right side removed images — background handles visual */}
-          <div></div>
-        </div>
-
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center p-5 bg-white/10 backdrop-blur-md rounded-xl"
-            >
-              <div className="font-heading text-3xl font-bold text-gold mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm text-gray-200">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
