@@ -101,20 +101,44 @@ export function Footer() {
                 <span>Nagpur, Maharashtra, India</span>
               </div>
 
-              <div className="pt-3 md:pt-4 border-t border-[#5A3A22]/20">
-  <h4 className="font-medium text-sm md:text-base mb-2">Team Contacts:</h4>
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2 text-xs md:text-sm">
-    {teamContacts.map((contact) => (
-      <a
-        key={contact.name}
-        href={`tel:${contact.phone.replace(/\s/g, "")}`}
-        className="text-[#5A3A22] hover:text-[#E6C79C] transition-colors duration-300 truncate"
-      >
-        {contact.name}: {contact.phone.slice(-10)}
-      </a>
-    ))}
+              <div className="pt-6 border-t border-[#5A3A22]/20">
+  <h4 className="font-heading font-bold text-base md:text-lg mb-4">
+    Contact Our Team
+  </h4>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {teamContacts.map((contact) => {
+      const initials = contact.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("");
+
+      return (
+        <a
+          key={contact.name}
+          href={`tel:${contact.phone.replace(/\s/g, "")}`}
+          className="flex items-center gap-4 bg-white rounded-xl px-4 py-3 shadow-sm hover:shadow-md transition-all duration-300"
+        >
+          {/* Initial Circle */}
+          <div className="w-10 h-10 rounded-full bg-[#5A3A22] text-white flex items-center justify-center font-bold text-sm shrink-0">
+            {initials}
+          </div>
+
+          {/* Name + Phone */}
+          <div className="flex flex-col">
+            <span className="font-semibold text-[#5A3A22] text-sm md:text-base">
+              {contact.name}
+            </span>
+            <span className="text-[#5A3A22]/80 text-xs md:text-sm">
+              {contact.phone}
+            </span>
+          </div>
+        </a>
+      );
+    })}
   </div>
 </div>
+
             </div>
           </div>
 
