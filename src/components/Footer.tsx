@@ -102,20 +102,19 @@ export function Footer() {
               </div>
 
               <div className="pt-3 md:pt-4 border-t border-[#5A3A22]/20">
-                <h4 className="font-medium text-sm md:text-base mb-2">Team Contacts:</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2 text-xs md:text-sm">
-                  {teamContacts.map((contact) => (
-                    <a
-                      key={contact.name}
-                      href={`tel:${contact.phone.replace(/\s/g, "")}`}
-                      className="text-[#5A3A22] hover:text-[#E6C79C] transition-colors duration-300 truncate"
-                    >
-                      <span>{contact.name}</span>
-                      <span>{contact.phone.slice(-10)}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
+  <h4 className="font-medium text-sm md:text-base mb-2">Team Contacts:</h4>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2 text-xs md:text-sm">
+    {teamContacts.map((contact) => (
+      <a
+        key={contact.name}
+        href={`tel:${contact.phone.replace(/\s/g, "")}`}
+        className="text-[#5A3A22] hover:text-[#E6C79C] transition-colors duration-300 truncate"
+      >
+        {contact.name}: {contact.phone.slice(-10)}
+      </a>
+    ))}
+  </div>
+</div>
             </div>
           </div>
 
