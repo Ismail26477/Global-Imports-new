@@ -110,7 +110,8 @@ export function Footer() {
                       href={`tel:${contact.phone.replace(/\s/g, "")}`}
                       className="text-[#5A3A22] hover:text-[#E6C79C] transition-colors duration-300 truncate"
                     >
-                      {contact.name}: {contact.phone.slice(-10)}
+                      <span>{contact.name}</span>
+                      <span>{contact.phone.slice(-10)}</span>
                     </a>
                   ))}
                 </div>
