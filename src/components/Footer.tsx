@@ -128,7 +128,7 @@ export function Footer() {
             © 2026 Global Imports Nagpur. All rights reserved.
           </p>
           <p className="text-[#5A3A22]/80 text-xs md:text-sm text-center">
-            IEC License: 27EMQPG9332F1ZP | 16+ Years of Excellence
+            16+ Years of Excellence
           </p>
         </div>
       </div>
