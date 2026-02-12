@@ -28,78 +28,57 @@ export function TrustBadges() {
   return (
     <section className="py-8 bg-muted/50">
       <div className="container mx-auto px-4">
-        {/* Desktop View */}
-        <div className="hidden md:grid grid-cols-4 gap-4">
-          {badges.map((badge, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center text-center p-4 bg-white rounded-lg shadow-sm"
-            >
-              <div className="w-11 h-11 rounded-full bg-gold/10 flex items-center justify-center mb-3">
-                <badge.icon className="w-5 h-5 text-gold" />
-              </div>
-              <h3 className="font-heading font-semibold text-[15px] text-navy-dark mb-1">
-                {badge.title}
-              </h3>
-              <p className="text-[12px] leading-tight text-muted-foreground">
-                {badge.description}
-              </p>
-            </div>
-          ))}
-        </div>
+        <div className="trust-bridge-container">
+          {/* SVG Connecting Lines and Lightning Effect */}
+          <svg
+            className="trust-bridge-svg"
+            viewBox="0 0 300 260"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            {/* Top left to top right line */}
+            <line x1="50" y1="60" x2="250" y2="60" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            
+            {/* Bottom left to bottom right line */}
+            <line x1="50" y1="200" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
 
-        {/* Mobile View with Connecting Lines and Lightning Effect */}
-        <div className="md:hidden">
-          <div className="trust-bridge-container">
-            {/* SVG Lines and Lightning Effect */}
-            <svg
-              className="trust-bridge-svg"
-              viewBox="0 0 300 400"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              {/* Horizontal connecting lines */}
-              <line x1="75" y1="80" x2="225" y2="80" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
-              <line x1="75" y1="320" x2="225" y2="320" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            {/* Left line connecting top and bottom */}
+            <line x1="50" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            
+            {/* Right line connecting top and bottom */}
+            <line x1="250" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
 
-              {/* Vertical connecting lines */}
-              <line x1="75" y1="80" x2="75" y2="320" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
-              <line x1="225" y1="80" x2="225" y2="320" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            {/* Diagonal cross lines */}
+            <line x1="50" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
+            <line x1="250" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
 
-              {/* Diagonal cross lines */}
-              <line x1="75" y1="80" x2="225" y2="320" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.6" />
-              <line x1="225" y1="80" x2="75" y2="320" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.6" />
+            {/* Lightning bolt effect through center */}
+            <polyline points="150,30 155,80 145,120 160,160 155,200" stroke="url(#lightningGradient)" strokeWidth="2" fill="none" className="lightning-bolt" />
 
-              {/* Lightning effect lines */}
-              <line x1="150" y1="60" x2="155" y2="110" stroke="url(#lightningGradient)" strokeWidth="1.5" className="lightning-bolt" />
-              <line x1="155" y1="110" x2="148" y2="150" stroke="url(#lightningGradient)" strokeWidth="1.5" className="lightning-bolt" />
-              <line x1="148" y1="150" x2="158" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="lightning-bolt" />
+            {/* Gradient definition */}
+            <defs>
+              <linearGradient id="lightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: "#d4a574", stopOpacity: 0.9 }} />
+                <stop offset="50%" style={{ stopColor: "#f5d76e", stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: "#d4a574", stopOpacity: 0.9 }} />
+              </linearGradient>
+            </defs>
+          </svg>
 
-              {/* Gradient definition */}
-              <defs>
-                <linearGradient id="lightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: "#d4a574", stopOpacity: 0.8 }} />
-                  <stop offset="50%" style={{ stopColor: "#f5d76e", stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: "#d4a574", stopOpacity: 0.8 }} />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Badge Cards Grid */}
-            <div className="trust-bridge-grid">
-              {badges.map((badge, index) => (
-                <div
-                  key={index}
-                  className="trust-badge-card"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <div className="badge-icon-wrapper">
-                    <badge.icon className="w-5 h-5 text-gold" />
-                  </div>
-                  <h3 className="badge-title">{badge.title}</h3>
-                  <p className="badge-description">{badge.description}</p>
+          {/* Badge Cards in 2x2 Grid */}
+          <div className="trust-bridge-grid">
+            {badges.map((badge, index) => (
+              <div
+                key={index}
+                className="trust-badge-card"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <div className="badge-icon-wrapper">
+                  <badge.icon className="w-5 h-5 text-gold" />
                 </div>
-              ))}
-            </div>
+                <h3 className="badge-title">{badge.title}</h3>
+                <p className="badge-description">{badge.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 .trust-bridge-container {
   position: relative;
   width: 100%;
-  max-width: 320px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -13,6 +13,7 @@
   left: 0;
   z-index: 1;
   pointer-events: none;
+  min-height: 300px;
 }
 
 /* Connecting lines animation */
@@ -81,10 +82,22 @@
 .trust-bridge-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  padding: 20px 0;
+  gap: 20px;
+  padding: 30px 0;
   position: relative;
   z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .trust-bridge-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .trust-bridge-svg {
+    min-height: 250px;
+  }
 }
 
 /* Individual badge card */
