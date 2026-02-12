@@ -56,57 +56,25 @@ export function TrustBadges() {
 
           {/* Badge Grid */}
           <div className="grid grid-cols-2 gap-6 relative z-10">
-            {/* Badge 1 - Top Left */}
-            <div className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-lg">
-              <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-3">
-                <badges[0].icon className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-bold text-sm text-amber-900 mb-1">
-                {badges[0].title}
-              </h3>
-              <p className="text-xs leading-tight text-gray-600">
-                {badges[0].description}
-              </p>
-            </div>
-
-            {/* Badge 2 - Top Right */}
-            <div className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-lg">
-              <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-3">
-                <badges[1].icon className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-bold text-sm text-amber-900 mb-1">
-                {badges[1].title}
-              </h3>
-              <p className="text-xs leading-tight text-gray-600">
-                {badges[1].description}
-              </p>
-            </div>
-
-            {/* Badge 3 - Bottom Left */}
-            <div className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-lg">
-              <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-3">
-                <badges[2].icon className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-bold text-sm text-amber-900 mb-1">
-                {badges[2].title}
-              </h3>
-              <p className="text-xs leading-tight text-gray-600">
-                {badges[2].description}
-              </p>
-            </div>
-
-            {/* Badge 4 - Bottom Right */}
-            <div className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-lg">
-              <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-3">
-                <badges[3].icon className="w-6 h-6 text-amber-700" />
-              </div>
-              <h3 className="font-bold text-sm text-amber-900 mb-1">
-                {badges[3].title}
-              </h3>
-              <p className="text-xs leading-tight text-gray-600">
-                {badges[3].description}
-              </p>
-            </div>
+            {badges.map((badge, index) => {
+              const IconComponent = badge.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center p-5 bg-white rounded-2xl shadow-lg"
+                >
+                  <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-3">
+                    <IconComponent className="w-6 h-6 text-amber-700" />
+                  </div>
+                  <h3 className="font-bold text-sm text-amber-900 mb-1">
+                    {badge.title}
+                  </h3>
+                  <p className="text-xs leading-tight text-gray-600">
+                    {badge.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
