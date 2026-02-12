@@ -32,59 +32,65 @@ export function AboutSection() {
 
   return (
     <section
-  id="about"
-  className="section-padding relative bg-fixed bg-center bg-cover"
-  style={{
-    backgroundImage: "url('/services/end-to-end-procurement.png')",
-  }}
->
-<div className="container mx-auto px-4 relative z-10">
+      id="about"
+      className="section-padding relative bg-fixed bg-center bg-cover"
+      style={{
+        backgroundImage: "url('/services/end-to-end-procurement.png')",
+      }}
+    >
+      {/* Dark Overlay for Better Text Readability */}
+      <div className="absolute inset-0 bg-black/45"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div>
-            <span className="text-gold font-medium uppercase tracking-wider text-xs sm:text-sm">
+            <span className="inline-block text-gold font-bold uppercase tracking-wider text-xs sm:text-sm px-3 sm:px-4 py-1.5 bg-gold/15 rounded-full mb-4 sm:mb-6">
               About Us
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-navy-dark mt-2 mb-4 sm:mb-6">
+            
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-black mt-2 mb-4 sm:mb-6 leading-tight">
               Your Trusted{" "}
-              <span className="text-gradient-gold">Global Trade Partner</span>
+              <span className="text-gradient-gold block">Global Trade Partner</span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
-              <strong className="text-navy-dark">Hassle-free Import & Global E-Commerce Sourcing</strong>
+            
+            <p className="text-lg sm:text-xl text-yellow-100 font-semibold mb-3 sm:mb-4">
+              Hassle-free Import & Global E-Commerce Sourcing
             </p>
-            <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8">
+            
+            <p className="text-base sm:text-lg text-gray-100 mb-8 sm:mb-10 leading-relaxed">
               We bridge the gap between Indian businesses and global manufacturers, 
               making international trade simple and profitable. With over 16 years 
               of experience, we've helped hundreds of businesses source quality 
               products from trusted suppliers worldwide.
             </p>
 
-            <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
+            <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
               {highlights.map((highlight, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gold shrink-0" />
-                  <span className="text-sm sm:text-base text-navy-dark">{highlight}</span>
+                <div key={index} className="flex items-start gap-3 sm:gap-4">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 shrink-0 mt-0.5" />
+                  <span className="text-base sm:text-lg text-gray-100 font-medium">{highlight}</span>
                 </div>
               ))}
             </div>
 
-            <div className="bg-muted/50 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
-              <h4 className="font-heading font-bold text-sm sm:text-base text-navy-dark mb-3 sm:mb-4">
+            <div className="glass-dark rounded-xl p-5 sm:p-8 mb-8 sm:mb-10 border border-gold/30">
+              <h4 className="font-heading font-bold text-lg sm:text-xl text-white mb-4 sm:mb-6">
                 Our Evolution
               </h4>
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-3 sm:space-y-4">
                 {evolution.map((item, index) => (
-                  <div key={index} className="flex items-center gap-2 sm:gap-4 flex-wrap">
-                    <span className="px-2 sm:px-3 py-1 bg-gold text-navy-dark text-xs sm:text-sm font-medium rounded-full">
-                      {item.label}:
+                  <div key={index} className="flex items-center gap-3 sm:gap-4 flex-wrap">
+                    <span className="px-3 sm:px-4 py-2 bg-gradient-to-r from-gold to-gold/80 text-navy-dark text-xs sm:text-sm font-bold rounded-full whitespace-nowrap">
+                      {item.label}
                     </span>
-                    <span className="text-xs sm:text-sm text-muted-foreground">{item.text}</span>
+                    <span className="text-sm sm:text-base text-gray-100 font-medium">{item.text}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <Button onClick={scrollToContact} className="btn-gold">
+            <Button onClick={scrollToContact} className="btn-gold text-base sm:text-lg py-3 sm:py-4 px-6 sm:px-8 font-bold">
               Start Your Trade Journey
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
@@ -128,16 +134,16 @@ export function AboutSection() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-12 md:mt-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 md:mt-16">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center p-3 sm:p-6 bg-white rounded-lg sm:rounded-xl shadow-sm card-hover"
+              className="text-center p-5 sm:p-8 bg-gradient-to-br from-gold/20 to-gold/10 rounded-lg sm:rounded-2xl shadow-lg card-hover border border-gold/40 backdrop-blur-sm"
             >
-              <div className="font-heading text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gold mb-1 sm:mb-2">
+              <div className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gold mb-2 sm:mb-3">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-100 uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
