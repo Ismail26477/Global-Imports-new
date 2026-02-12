@@ -15,8 +15,32 @@ import ImportCompliance from "./pages/services/ImportCompliance";
 import LogisticsFreight from "./pages/services/LogisticsFreight";
 import CustomsDocumentation from "./pages/services/CustomsDocumentation";
 import QualityInspection from "./pages/services/QualityInspection";
+import { useScrollAnimation } from "./hooks/useScrollAnimation";
 
 const queryClient = new QueryClient();
+
+// Wrapper component to apply scroll animations
+const AppContent = () => {
+  useScrollAnimation();
+  
+  return (
+    <Routes>
+      <Route path="/" element={<Index />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/services/global-sourcing" element={<GlobalSourcing />} />
+      <Route path="/services/export-management" element={<ExportManagement />} />
+      <Route path="/services/import-compliance" element={<ImportCompliance />} />
+      <Route path="/services/logistics-freight" element={<LogisticsFreight />} />
+      <Route path="/services/customs-documentation" element={<CustomsDocumentation />} />
+      <Route path="/services/quality-inspection" element={<QualityInspection />} />
+      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -24,21 +48,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/services/global-sourcing" element={<GlobalSourcing />} />
-          <Route path="/services/export-management" element={<ExportManagement />} />
-          <Route path="/services/import-compliance" element={<ImportCompliance />} />
-          <Route path="/services/logistics-freight" element={<LogisticsFreight />} />
-          <Route path="/services/customs-documentation" element={<CustomsDocumentation />} />
-          <Route path="/services/quality-inspection" element={<QualityInspection />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppContent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

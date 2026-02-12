@@ -1,0 +1,376 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║              📋 WHICH FILES YOU NEED TO CHANGE - QUICK LIST 📋             ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 SIMPLE ANSWER
+════════════════════════════════════════════════════════════════════════════
+
+You need to ADD animation classes to these files:
+  
+  1. src/pages/Index.tsx          (Hero, featured items, testimonials)
+  2. src/pages/Services.tsx       (Service cards)
+  3. src/pages/Products.tsx       (Product cards)
+  4. src/pages/About.tsx          (About sections) - Optional
+  5. src/pages/Contact.tsx        (Contact form) - Optional
+  6. src/pages/services/*.tsx     (Service details) - Optional
+
+
+❌ You DON'T need to change these (already done):
+  
+  ✓ src/index.css                 (Animations CSS - already added)
+  ✓ src/App.tsx                   (Hook initialized - already done)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+📁 FILE STRUCTURE & WHAT TO CHANGE
+════════════════════════════════════════════════════════════════════════════════
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🔴 PRIORITY 1 - EDIT THESE FIRST                                      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┌─ 1️⃣  src/pages/Index.tsx ─────────────────────────────────────────────┐
+│                                                                       │
+│  This is your homepage. Add animations to:                           │
+│  ✏️  Hero section heading → float animation                         │
+│  ✏️  Hero section subtext → slide-left animation                    │
+│  ✏️  Featured service cards → bounce animation                      │
+│  ✏️  CTA buttons → bounce animation                                 │
+│  ✏️  Testimonials → rotate or bounce animation                      │
+│  ✏️  Any showcase sections → various animations                     │
+│                                                                       │
+│  How to: Add class to existing elements:                             │
+│    <h1 className="animate-on-scroll float">...</h1>                │
+│    <div className="card animate-on-scroll bounce">...</div>        │
+│    <button className="btn-gold animate-on-scroll bounce">...</button>
+│                                                                       │
+│  Time: 10-15 minutes                                                 │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+┌─ 2️⃣  src/pages/Services.tsx ──────────────────────────────────────────┐
+│                                                                       │
+│  Your services page. Add animations to:                              │
+│  ✏️  Page heading → float animation                                 │
+│  ✏️  Service category cards → bounce animation                      │
+│  ✏️  Service grid items → bounce animation                          │
+│  ✏️  Any description sections → slide animations                    │
+│                                                                       │
+│  How to: Wrap service cards with animations:                         │
+│    <div className="service-card animate-on-scroll bounce">         │
+│      ...                                                             │
+│    </div>                                                            │
+│                                                                       │
+│  Time: 10-15 minutes                                                 │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+┌─ 3️⃣  src/pages/Products.tsx ──────────────────────────────────────────┐
+│                                                                       │
+│  Your products page. Add animations to:                              │
+│  ✏️  Page heading → float animation                                 │
+│  ✏️  Product cards → bounce animation                               │
+│  ✏️  Product images → (hover already works!)                        │
+│  ✏️  Product grid → bounce on cards                                 │
+│  ✏️  Any sections → various animations                              │
+│                                                                       │
+│  How to: Add class to product cards:                                 │
+│    <div className="product-card animate-on-scroll bounce">         │
+│      ...                                                             │
+│    </div>                                                            │
+│                                                                       │
+│  Time: 10-15 minutes                                                 │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🟡 PRIORITY 2 - EDIT THESE NEXT                                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┌─ 4️⃣  src/pages/About.tsx ──────────────────────────────────────────────┐
+│                                                                       │
+│  Your about page. Add animations to:                                 │
+│  ✏️  About heading → float animation                                │
+│  ✏️  About description blocks → slide animations                    │
+│  ✏️  Mission/Vision statements → bounce or float                    │
+│  ✏️  Team/Company info → various animations                         │
+│  ✏️  Statistics/achievements → bounce animation                     │
+│                                                                       │
+│  How to: Add class to content sections:                              │
+│    <section className="about-section animate-on-scroll slide-left"> │
+│      ...                                                             │
+│    </section>                                                        │
+│                                                                       │
+│  Time: 10-15 minutes                                                 │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+┌─ 5️⃣  src/pages/Contact.tsx ───────────────────────────────────────────┐
+│                                                                       │
+│  Your contact page. Add animations to:                               │
+│  ✏️  Contact form → bounce animation                                │
+│  ✏️  Form input sections → slide animations                         │
+│  ✏️  Contact info blocks → rotate or float                          │
+│  ✏️  Map container → float animation                                │
+│  ✏️  Submit button → bounce animation                               │
+│                                                                       │
+│  How to: Add class to form and sections:                             │
+│    <form className="contact-form animate-on-scroll bounce">        │
+│      ...                                                             │
+│    </form>                                                           │
+│    <button className="animate-on-scroll bounce">Send</button>      │
+│                                                                       │
+│  Time: 10-15 minutes                                                 │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ 🟢 PRIORITY 3 - SERVICE DETAIL PAGES (OPTIONAL)                       ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┌─ 6️⃣  src/pages/services/GlobalSourcing.tsx ──────────────────────────┐
+│     src/pages/services/ExportManagement.tsx                         │
+│     src/pages/services/ImportCompliance.tsx                         │
+│     src/pages/services/LogisticsFreight.tsx                         │
+│     src/pages/services/CustomsDocumentation.tsx                     │
+│     src/pages/services/QualityInspection.tsx                        │
+│                                                                       │
+│  These follow the same pattern as Index.tsx:                         │
+│  ✏️  Page heading → float animation                                 │
+│  ✏️  Content sections → slide animations                            │
+│  ✏️  Feature cards → bounce animation                               │
+│  ✏️  CTA buttons → bounce animation                                 │
+│                                                                       │
+│  How to: Same as other pages                                         │
+│    <h1 className="animate-on-scroll float">...</h1>                │
+│    <div className="card animate-on-scroll bounce">...</div>        │
+│                                                                       │
+│  Time: 5-10 minutes per page                                         │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+🎨 WHICH ANIMATION TO USE WHERE
+════════════════════════════════════════════════════════════════════════════════
+
+  ELEMENT TYPE          │ BEST ANIMATION    │ REASON
+  ──────────────────────┼──────────────────┼────────────────────────────────
+  Cards                 │ bounce            │ Eye-catching, popular
+  Buttons               │ bounce            │ Interactive, responsive
+  Headings              │ float             │ Elegant, smooth
+  Text/Descriptions     │ slide-left        │ Directional, natural
+  Images                │ slide-right       │ Opposite of text
+  Special Elements      │ rotate            │ Eye-catching, unique
+  Hero Section          │ float + bounce    │ Mix for impact
+  Testimonials          │ bounce or rotate  │ Varied, interesting
+  Forms                 │ bounce or float   │ Friendly, welcoming
+  Grid Items            │ bounce            │ Consistent, rhythmic
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+⚡ QUICK REFERENCE - COPY & PASTE
+════════════════════════════════════════════════════════════════════════════════
+
+Bounce (Use This Most):
+  className="your-classes animate-on-scroll bounce"
+
+Slide Left:
+  className="your-classes animate-on-scroll slide-left"
+
+Slide Right:
+  className="your-classes animate-on-scroll slide-right"
+
+Rotate:
+  className="your-classes animate-on-scroll rotate"
+
+Float (For Text):
+  className="your-classes animate-on-scroll float"
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+✅ FILES ALREADY DONE (NO CHANGES NEEDED)
+════════════════════════════════════════════════════════════════════════════════
+
+✓ src/index.css
+  ├─ Added 180+ lines of CSS
+  ├─ Hover effects (automatic)
+  ├─ Scroll animations (5 types)
+  └─ No changes needed from you
+
+✓ src/App.tsx
+  ├─ Added useScrollAnimation hook
+  ├─ Initializes on app load
+  └─ No changes needed from you
+
+✓ src/hooks/useScrollAnimation.ts (NEW)
+  ├─ Created scroll detection hook
+  ├─ Intersection Observer setup
+  └─ No changes needed from you
+
+✓ src/utils/animationClasses.ts (NEW)
+  ├─ Created utilities
+  ├─ Helper functions
+  └─ No changes needed from you
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+🎬 GETTING STARTED - STEP BY STEP
+════════════════════════════════════════════════════════════════════════════════
+
+STEP 1: Open src/pages/Index.tsx
+        └─ Click on file in left sidebar
+
+STEP 2: Find a card or heading
+        └─ Look for: <div className="card">
+                     <h1>
+                     <button>
+
+STEP 3: Add animation class
+        └─ Change: className="existing-classes"
+           To:     className="existing-classes animate-on-scroll bounce"
+
+STEP 4: Save file
+        └─ Ctrl+S (or Cmd+S on Mac)
+
+STEP 5: Refresh browser
+        └─ F5 or Ctrl+R
+
+STEP 6: Scroll page
+        └─ Watch the animations!
+
+STEP 7: Repeat for other elements
+        └─ Add animations to more cards/buttons
+
+STEP 8: Move to next file
+        └─ Edit Services.tsx, Products.tsx, etc.
+
+STEP 9: Celebrate! 🎉
+        └─ Your site has awesome animations!
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+📊 TIME ESTIMATE
+════════════════════════════════════════════════════════════════════════════════
+
+Phase 1 (Quick Wins):         30 minutes
+  └─ Edit: Index.tsx only
+  └─ Result: Hero and cards animated
+
+Phase 1+2 (Core Pages):       1 hour
+  ├─ Edit: Index, Services, Products
+  └─ Result: Main pages fully animated
+
+Phase 1+2+3 (Complete):       2 hours
+  ├─ Edit: All pages
+  ├─ Test on mobile
+  └─ Result: Full site with animations
+
+Total if doing everything:    ~2 hours
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+💡 COMMON PATTERNS
+════════════════════════════════════════════════════════════════════════════════
+
+Pattern 1: Card Grid (Most Common)
+───────────────────────────────────
+<div className="grid grid-cols-3 gap-4">
+  <div className="card animate-on-scroll bounce">Item 1</div>
+  <div className="card animate-on-scroll bounce">Item 2</div>
+  <div className="card animate-on-scroll bounce">Item 3</div>
+</div>
+Auto-staggers: 0ms, 150ms, 300ms ✨
+
+
+Pattern 2: Hero Section
+──────────────────────
+<section className="hero">
+  <h1 className="animate-on-scroll float">Title</h1>
+  <p className="animate-on-scroll slide-left">Subtitle</p>
+  <button className="btn-gold animate-on-scroll bounce">CTA</button>
+</section>
+
+
+Pattern 3: Two Column Layout
+────────────────────────────
+<div className="flex gap-8">
+  <div className="animate-on-scroll slide-left">
+    Left content
+  </div>
+  <div className="animate-on-scroll slide-right">
+    Right content
+  </div>
+</div>
+
+
+Pattern 4: Feature List
+──────────────────────
+<div className="space-y-4">
+  <div className="feature animate-on-scroll slide-right">Feature 1</div>
+  <div className="feature animate-on-scroll slide-right">Feature 2</div>
+  <div className="feature animate-on-scroll slide-right">Feature 3</div>
+</div>
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+❓ QUESTIONS?
+════════════════════════════════════════════════════════════════════════════════
+
+Q: Which file should I start with?
+A: Start with src/pages/Index.tsx - it's the most visible
+
+Q: How many files do I need to edit?
+A: Minimum 3 files (Index, Services, Products) for good coverage
+   Or edit all 5 files for complete coverage
+
+Q: Can I edit files in any order?
+A: Yes! But I recommend the Priority order for best results
+
+Q: What if I don't like an animation?
+A: Just try a different animation type (bounce, slide-left, etc.)
+
+Q: How do I know if I did it right?
+A: Refresh browser, scroll page, see animations work!
+
+Q: Do I need to edit src/index.css or App.tsx?
+A: No! They're already done. Just add classes to your components.
+
+Q: Can I mix animation types?
+A: Yes! Use different animations for visual variety.
+
+Q: Will animations slow down my site?
+A: No! They're optimized and won't impact performance.
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Ready to start? 🚀
+
+👉 Open src/pages/Index.tsx and add your first animation!
+
+═══════════════════════════════════════════════════════════════════════════════
