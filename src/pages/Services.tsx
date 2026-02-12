@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { AnimationWrapper } from "../components/AnimationWrapper";
+import { HoverCard } from "../components/HoverCard";
+import { ParallaxSection } from "../components/ParallaxSection";
 
 const services = [
   {
@@ -60,52 +63,66 @@ export default function Services() {
       <Header />
 
       {/* Hero */}
-      <section className="pt-28 pb-20 bg-gradient-to-br from-navy via-navy-dark to-navy-light text-white text-center">
+      <ParallaxSection speed={0.3} className="pt-28 pb-20 bg-gradient-to-br from-navy via-navy-dark to-navy-light text-white text-center">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Sparkles className="text-gold w-5 h-5" />
-            <span className="uppercase tracking-widest text-gold text-sm">
-              What We Offer
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-heading mb-6">
-            Our <span className="text-gradient-gold">Services</span>
-          </h1>
-          <p className="text-white/70 max-w-3xl mx-auto text-lg">
-            End-to-end global trade solutions from sourcing to shipping, compliance to quality inspection — all under one roof.
-          </p>
+          <AnimationWrapper type="slideUp" delay={0.1}>
+            <div className="flex justify-center items-center gap-2 mb-4">
+              <Sparkles className="text-gold w-5 h-5" />
+              <span className="uppercase tracking-widest text-gold text-sm">
+                What We Offer
+              </span>
+            </div>
+          </AnimationWrapper>
+          <AnimationWrapper type="slideUp" delay={0.2}>
+            <h1 className="text-4xl md:text-6xl font-heading mb-6">
+              Our <span className="text-gradient-gold">Services</span>
+            </h1>
+          </AnimationWrapper>
+          <AnimationWrapper type="slideUp" delay={0.3}>
+            <p className="text-white/70 max-w-3xl mx-auto text-lg">
+              End-to-end global trade solutions from sourcing to shipping, compliance to quality inspection — all under one roof.
+            </p>
+          </AnimationWrapper>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Services Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
+              <AnimationWrapper
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-soft border border-border card-hover flex flex-col"
+                type="slideUp"
+                delay={index * 0.1}
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-cyan/20 flex items-center justify-center mb-6">
-                  <service.icon className="w-8 h-8 text-gold" />
-                </div>
-
-                <h3 className="font-heading text-2xl text-navy-dark mb-4">
-                  {service.title}
-                </h3>
-
-                <p className="text-muted-foreground mb-6 flex-grow">
-                  {service.description}
-                </p>
-
-                <Button
-                  onClick={() => navigate(service.path)}
-                  className="btn-gold mt-auto group"
+                <HoverCard
+                  scaleOnHover={1.05}
+                  shadowOnHover="lg"
+                  translateY={-10}
+                  className="bg-white p-8 rounded-2xl shadow-soft border border-border flex flex-col h-full"
                 >
-                  Learn More
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </div>
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/20 to-cyan/20 flex items-center justify-center mb-6">
+                    <service.icon className="w-8 h-8 text-gold" />
+                  </div>
+
+                  <h3 className="font-heading text-2xl text-navy-dark mb-4">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-muted-foreground mb-6 flex-grow">
+                    {service.description}
+                  </p>
+
+                  <Button
+                    onClick={() => navigate(service.path)}
+                    className="btn-gold mt-auto group"
+                  >
+                    Learn More
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </HoverCard>
+              </AnimationWrapper>
             ))}
           </div>
         </div>

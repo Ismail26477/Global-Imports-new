@@ -5,6 +5,9 @@ import { ChatBot } from "../components/ChatBot";
 import { CheckCircle, ArrowRight, Sparkles, Users, Globe, Award, Target } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { AnimationWrapper } from "../components/AnimationWrapper";
+import { HoverCard } from "../components/HoverCard";
+import { ParallaxSection } from "../components/ParallaxSection";
 
 const highlights = [
   "Direct partnerships with verified manufacturers",
@@ -43,38 +46,50 @@ export default function About() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-navy via-navy-dark to-navy-light relative overflow-hidden">
+      <ParallaxSection speed={0.3} className="pt-24 md:pt-32 pb-16 md:pb-24 bg-gradient-to-br from-navy via-navy-dark to-navy-light relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy-dark/80" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-gold" />
-              <span className="text-gold font-medium uppercase tracking-wider text-sm">About Us</span>
-            </div>
-            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-              Your Trusted <span className="text-gradient-gold">Global Trade</span> Partner
-            </h1>
-            <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
-              With over 16 years of experience, we bridge the gap between Indian businesses 
-              and global manufacturers, making international trade simple and profitable.
-            </p>
+            <AnimationWrapper type="slideUp" delay={0.1}>
+              <div className="flex items-center gap-2 mb-4">
+                <Sparkles className="w-5 h-5 text-gold" />
+                <span className="text-gold font-medium uppercase tracking-wider text-sm">About Us</span>
+              </div>
+            </AnimationWrapper>
+            <AnimationWrapper type="slideUp" delay={0.2}>
+              <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+                Your Trusted <span className="text-gradient-gold">Global Trade</span> Partner
+              </h1>
+            </AnimationWrapper>
+            <AnimationWrapper type="slideUp" delay={0.3}>
+              <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
+                With over 16 years of experience, we bridge the gap between Indian businesses 
+                and global manufacturers, making international trade simple and profitable.
+              </p>
+            </AnimationWrapper>
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
       {/* Stats Section */}
       <section className="py-12 md:py-16 bg-white border-b border-border">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-gold mb-2">
-                  {stat.value}
+              <AnimationWrapper
+                key={index}
+                type="scaleIn"
+                delay={index * 0.1}
+              >
+                <div className="text-center">
+                  <div className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-gold mb-2">
+                    {stat.value}
+                  </div>
+                  <p className="text-muted-foreground text-sm md:text-base">{stat.label}</p>
                 </div>
-                <p className="text-muted-foreground text-sm md:text-base">{stat.label}</p>
-              </div>
+              </AnimationWrapper>
             ))}
           </div>
         </div>

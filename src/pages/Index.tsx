@@ -14,6 +14,7 @@ import { Footer } from "../components/Footer";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { ChatBot } from "../components/ChatBot";
 import { ContactPopup } from "../components/ContactPopup";
+import { AnimationWrapper } from "../components/AnimationWrapper";
 
 const Index = () => {
   return (
@@ -21,16 +22,36 @@ const Index = () => {
       <Header />
       <main>
         <HeroSlider />
-        <TrustBadges />
-        <AboutSection />
-        <PlatformsMarquee />
-        <ProcessSection />
-        <JourneySection />
-        <ServicesSection />
-        <ProductsSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <ContactSection />
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <TrustBadges />
+        </AnimationWrapper>
+        <AnimationWrapper type="fadeIn" threshold={0.2}>
+          <AboutSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <PlatformsMarquee />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <ProcessSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="fadeIn" threshold={0.2}>
+          <JourneySection />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <ServicesSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <ProductsSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="fadeIn" threshold={0.2}>
+          <TestimonialsSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <FAQSection />
+        </AnimationWrapper>
+        <AnimationWrapper type="slideUp" threshold={0.2}>
+          <ContactSection />
+        </AnimationWrapper>
       </main>
       <Footer />
       

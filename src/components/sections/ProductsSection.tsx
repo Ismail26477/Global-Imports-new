@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { X, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimationWrapper } from "../AnimationWrapper";
+import { HoverCard } from "../HoverCard";
 
 const categories = [
   {
@@ -111,26 +113,38 @@ export function ProductsSection() {
         {/* ✅ 2 cards per row on mobile */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {categories.map((category, index) => (
-            <div
+            <AnimationWrapper
               key={index}
-              onClick={() => setSelectedCategory(category)}
-              className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm card-hover"
+              type="slideUp"
+              delay={index * 0.08}
             >
-              <div className="relative h-32 md:h-48 overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
-                  <h3 className="font-heading font-bold text-sm md:text-xl text-white flex items-center gap-2">
-                    <Package className="w-4 h-4 md:w-5 md:h-5 text-gold" />
-                    {category.name}
-                  </h3>
+              <HoverCard
+                scaleOnHover={1.05}
+                shadowOnHover="md"
+                translateY={-8}
+                className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm"
+              >
+                <div
+                  onClick={() => setSelectedCategory(category)}
+                  className="cursor-pointer"
+                >
+                  <div className="relative h-32 md:h-48 overflow-hidden">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6">
+                      <h3 className="font-heading font-bold text-sm md:text-xl text-white flex items-center gap-2">
+                        <Package className="w-4 h-4 md:w-5 md:h-5 text-gold" />
+                        {category.name}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </HoverCard>
+            </AnimationWrapper>
           ))}
         </div>
       </div>
