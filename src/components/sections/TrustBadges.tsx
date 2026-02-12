@@ -36,23 +36,23 @@ export function TrustBadges() {
             preserveAspectRatio="xMidYMid meet"
           >
             {/* Top left to top right line */}
-            <line x1="50" y1="60" x2="250" y2="60" stroke="url(#lightningGradient)" strokeWidth="4" className="connecting-line" />
+            <line x1="50" y1="60" x2="250" y2="60" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
             
             {/* Bottom left to bottom right line */}
-            <line x1="50" y1="200" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="4" className="connecting-line" />
+            <line x1="50" y1="200" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
 
             {/* Left line connecting top and bottom */}
-            <line x1="50" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="4" className="connecting-line" />
+            <line x1="50" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
             
             {/* Right line connecting top and bottom */}
-            <line x1="250" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="4" className="connecting-line" />
+            <line x1="250" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
 
             {/* Diagonal cross lines */}
-            <line x1="50" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="3" className="connecting-line diagonal" opacity="0.6" />
-            <line x1="250" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="3" className="connecting-line diagonal" opacity="0.6" />
+            <line x1="50" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
+            <line x1="250" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
 
             {/* Lightning bolt effect through center */}
-            <polyline points="150,30 155,80 145,120 160,160 155,200" stroke="url(#lightningGradient)" strokeWidth="3" fill="none" className="lightning-bolt" />
+            <polyline points="150,30 155,80 145,120 160,160 155,200" stroke="url(#lightningGradient)" strokeWidth="2" fill="none" className="lightning-bolt" />
 
             {/* Gradient definition */}
             <defs>
