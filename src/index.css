@@ -224,6 +224,35 @@
     }
   }
 
+  /* Enhanced Pulse for About Section */
+  .animate-pulse {
+    animation: enhanced-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes enhanced-pulse {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  /* Smooth Glow Effect */
+  .glow-effect {
+    background-color: rgba(217, 119, 6, 0.15);
+    box-shadow: 0 0 30px rgba(217, 119, 6, 0.3), inset 0 0 30px rgba(217, 119, 6, 0.1);
+  }
+
+  /* Hover Glow */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 40px rgba(217, 119, 6, 0.4);
+  }
+
   /* ===== Smooth Infinite Marquee (Correct) ===== */
 
 .marquee-track {
