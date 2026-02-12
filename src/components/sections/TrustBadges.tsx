@@ -26,7 +26,7 @@ const badges = [
 
 export function TrustBadges() {
   return (
-    <section className="py-8 bg-muted/50">
+    <section className="py-8 bg-muted/50 md:hidden">
       <div className="container mx-auto px-4">
         <div className="trust-bridge-container">
           {/* SVG Connecting Lines and Lightning Effect */}
@@ -36,32 +36,23 @@ export function TrustBadges() {
             preserveAspectRatio="xMidYMid meet"
           >
             {/* Top left to top right line */}
-            <line x1="50" y1="60" x2="250" y2="60" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            <line x1="50" y1="60" x2="250" y2="60" stroke="#5a3a2a" strokeWidth="4" className="connecting-line" strokeLinecap="round" />
             
             {/* Bottom left to bottom right line */}
-            <line x1="50" y1="200" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            <line x1="50" y1="200" x2="250" y2="200" stroke="#5a3a2a" strokeWidth="4" className="connecting-line" strokeLinecap="round" />
 
             {/* Left line connecting top and bottom */}
-            <line x1="50" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            <line x1="50" y1="60" x2="50" y2="200" stroke="#5a3a2a" strokeWidth="4" className="connecting-line" strokeLinecap="round" />
             
             {/* Right line connecting top and bottom */}
-            <line x1="250" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="2" className="connecting-line" />
+            <line x1="250" y1="60" x2="250" y2="200" stroke="#5a3a2a" strokeWidth="4" className="connecting-line" strokeLinecap="round" />
 
             {/* Diagonal cross lines */}
-            <line x1="50" y1="60" x2="250" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
-            <line x1="250" y1="60" x2="50" y2="200" stroke="url(#lightningGradient)" strokeWidth="1.5" className="connecting-line diagonal" opacity="0.5" />
+            <line x1="50" y1="60" x2="250" y2="200" stroke="#5a3a2a" strokeWidth="3" className="connecting-line diagonal" opacity="0.6" strokeLinecap="round" />
+            <line x1="250" y1="60" x2="50" y2="200" stroke="#5a3a2a" strokeWidth="3" className="connecting-line diagonal" opacity="0.6" strokeLinecap="round" />
 
             {/* Lightning bolt effect through center */}
-            <polyline points="150,30 155,80 145,120 160,160 155,200" stroke="url(#lightningGradient)" strokeWidth="2" fill="none" className="lightning-bolt" />
-
-            {/* Gradient definition */}
-            <defs>
-              <linearGradient id="lightningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style={{ stopColor: "#d4a574", stopOpacity: 0.9 }} />
-                <stop offset="50%" style={{ stopColor: "#f5d76e", stopOpacity: 1 }} />
-                <stop offset="100%" style={{ stopColor: "#d4a574", stopOpacity: 0.9 }} />
-              </linearGradient>
-            </defs>
+            <polyline points="150,30 155,80 145,120 160,160 155,200" stroke="#5a3a2a" strokeWidth="3" fill="none" className="lightning-bolt" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
 
           {/* Badge Cards in 2x2 Grid */}

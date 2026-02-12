@@ -3,6 +3,13 @@
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .trust-bridge-container {
+    display: block;
+  }
 }
 
 .trust-bridge-svg {
@@ -21,10 +28,12 @@
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
   animation: drawLine 2s ease-in-out forwards, pulse 3s ease-in-out infinite 2s;
+  stroke: #5a3a2a;
 }
 
 .connecting-line.diagonal {
   animation: drawLine 2.5s ease-in-out forwards, pulse 3s ease-in-out infinite 2.5s;
+  stroke: #5a3a2a;
 }
 
 /* Lightning bolt animation */
@@ -32,7 +41,8 @@
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
   animation: drawLightning 1.5s ease-in-out infinite 1s, glow 1.5s ease-in-out infinite 1s;
-  filter: drop-shadow(0 0 2px rgba(212, 165, 116, 0.8));
+  filter: drop-shadow(0 0 3px rgba(90, 58, 42, 0.6));
+  stroke: #5a3a2a;
 }
 
 /* Draw line keyframes */
@@ -61,7 +71,7 @@
 /* Pulse animation for lines */
 @keyframes pulse {
   0%, 100% {
-    opacity: 0.6;
+    opacity: 0.7;
   }
   50% {
     opacity: 1;
@@ -71,10 +81,10 @@
 /* Glow animation for lightning */
 @keyframes glow {
   0%, 100% {
-    filter: drop-shadow(0 0 2px rgba(212, 165, 116, 0.4));
+    filter: drop-shadow(0 0 3px rgba(90, 58, 42, 0.4));
   }
   50% {
-    filter: drop-shadow(0 0 8px rgba(245, 215, 110, 1));
+    filter: drop-shadow(0 0 10px rgba(90, 58, 42, 0.8));
   }
 }
 
@@ -89,6 +99,10 @@
 }
 
 @media (min-width: 768px) {
+  .trust-bridge-container {
+    display: none !important;
+  }
+  
   .trust-bridge-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
