@@ -32,7 +32,7 @@ export function Footer() {
           {/* Logo + About */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/logo16.png"
+              src="/logo18.png"
               alt="Global Imports Logo"
               className="h-16 md:h-20 w-auto object-contain mb-4 md:mb-6"
             />
