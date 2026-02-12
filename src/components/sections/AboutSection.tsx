@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useEffect } from 'react';
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +24,31 @@ const stats = [
 ];
 
 export function AboutSection() {
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('[data-animate]');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('fade-in-up');
+            }, index * 100);
+          });
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (statsRef.current) observer.observe(statsRef.current);
+
+    return () => {
+      if (statsRef.current) observer.unobserve(statsRef.current);
+    };
+  }, []);
+
   const scrollToContact = () => {
     const element = document.querySelector("#contact");
     if (element) {
@@ -41,7 +67,7 @@ export function AboutSection() {
 <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div>
+          <div className="fade-in-left">
             <span className="text-gold font-medium uppercase tracking-wider text-xs sm:text-sm">
               About Us
             </span>
@@ -91,7 +117,7 @@ export function AboutSection() {
           </div>
 
           {/* Right Content - Images */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 fade-in-right">
             <div className="space-y-3 sm:space-y-4">
               <div className="rounded-lg sm:rounded-2xl overflow-hidden shadow-lg">
                 <img
@@ -128,11 +154,12 @@ export function AboutSection() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-12 md:mt-16">
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-12 md:mt-16">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center p-3 sm:p-6 bg-white rounded-lg sm:rounded-xl shadow-sm card-hover"
+              data-animate
+              className="text-center p-3 sm:p-6 bg-white rounded-lg sm:rounded-xl shadow-sm card-hover opacity-0"
             >
               <div className="font-heading text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gold mb-1 sm:mb-2">
                 {stat.value}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { X, Package } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -86,6 +86,30 @@ const categories = [
 export function ProductsSection() {
   const [selectedCategory, setSelectedCategory] =
     useState<(typeof categories)[0] | null>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('[data-animate]');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('fade-in-up');
+            }, index * 100);
+          });
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (productsRef.current) observer.observe(productsRef.current);
+
+    return () => {
+      if (productsRef.current) observer.unobserve(productsRef.current);
+    };
+  }, []);
 
   const scrollToContact = () => {
     setSelectedCategory(null);
@@ -96,7 +120,7 @@ export function ProductsSection() {
   return (
     <section id="products" className="section-padding bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 fade-in-down">
           <span className="text-gold font-medium uppercase tracking-wider text-sm">
             Our Expertise
           </span>
@@ -109,12 +133,13 @@ export function ProductsSection() {
         </div>
 
         {/* ✅ 2 cards per row on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div ref={productsRef} className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {categories.map((category, index) => (
             <div
               key={index}
               onClick={() => setSelectedCategory(category)}
-              className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm card-hover"
+              data-animate
+              className="group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm card-hover opacity-0"
             >
               <div className="relative h-32 md:h-48 overflow-hidden">
                 <img

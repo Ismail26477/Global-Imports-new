@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import {
   Search,
   FileCheck,
@@ -86,11 +87,39 @@ const benefits = [
 ];
 
 export function ServicesSection() {
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const benefitsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('[data-animate]');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('fade-in-up');
+            }, index * 100);
+          });
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (servicesRef.current) observer.observe(servicesRef.current);
+    if (benefitsRef.current) observer.observe(benefitsRef.current);
+
+    return () => {
+      if (servicesRef.current) observer.unobserve(servicesRef.current);
+      if (benefitsRef.current) observer.unobserve(benefitsRef.current);
+    };
+  }, []);
+
   return (
     <section id="services" className="section-padding">
       <div className="container mx-auto px-4">
         {/* Services Heading */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 fade-in-down">
           <span className="text-gold font-medium uppercase tracking-wider text-sm">
             Our Services
           </span>
@@ -103,11 +132,12 @@ export function ServicesSection() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-20">
+        <div ref={servicesRef} className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-20">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-4 md:p-8 shadow-sm card-hover border border-border"
+              data-animate
+              className="group bg-white rounded-2xl p-4 md:p-8 shadow-sm card-hover border border-border opacity-0"
             >
               <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-navy to-navy-light flex items-center justify-center mb-4 md:mb-6 group-hover:from-gold group-hover:to-gold-dark transition-all duration-300">
                 <service.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
@@ -123,7 +153,7 @@ export function ServicesSection() {
         </div>
 
         {/* Why Choose Us Heading */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 fade-in-down">
           <span className="text-gold font-medium uppercase tracking-wider text-sm">
             Why Choose Us
           </span>
@@ -136,11 +166,12 @@ export function ServicesSection() {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+        <div ref={benefitsRef} className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="flex gap-3 p-4 md:p-6 bg-muted/30 rounded-xl card-hover"
+              data-animate
+              className="flex gap-3 p-4 md:p-6 bg-muted/30 rounded-xl card-hover opacity-0"
             >
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center shrink-0">
                 <benefit.icon className="w-5 h-5 md:w-6 md:h-6 text-gold" />
