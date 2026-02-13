@@ -47,57 +47,86 @@ export function TrustBadges() {
   return (
     <section className="py-8 md:py-8 bg-muted/50">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-4">
+        {/* Mobile Masonry Layout */}
+        <div className="grid grid-cols-2 gap-4 md:hidden">
+          {/* Box 1 - Top Left (Larger) */}
+          <div className="col-span-1 row-span-1">
+            <BadgeCard badge={badges[0]} />
+          </div>
+
+          {/* Box 2 - Top Right (Smaller, offset down) */}
+          <div className="col-span-1 row-span-1 pt-8">
+            <BadgeCard badge={badges[1]} />
+          </div>
+
+          {/* Box 3 - Bottom Left (Smaller) */}
+          <div className="col-span-1 row-span-1">
+            <BadgeCard badge={badges[2]} />
+          </div>
+
+          {/* Box 4 - Bottom Right (Larger) */}
+          <div className="col-span-1 row-span-1">
+            <BadgeCard badge={badges[3]} />
+          </div>
+        </div>
+
+        {/* Desktop Grid Layout (unchanged) */}
+        <div className="hidden md:grid grid-cols-4 gap-4">
           {badges.map((badge, index) => (
-            <div
-              key={index}
-              className={`
-                flex flex-col items-center text-center p-6 md:p-4
-                rounded-xl md:rounded-lg shadow-md md:shadow-sm 
-                transition-all duration-300 hover:shadow-xl md:hover:shadow-lg
-                bg-white border-t-4 md:border-t-4 md:border-t-transparent
-                ${badge.borderColor}
-              `}
-            >
-              {/* Icon Container - Larger & Colored on mobile */}
-              <div 
-                className={`
-                  flex items-center justify-center mb-4 md:mb-3
-                  w-16 h-16 md:w-11 md:h-11 rounded-full
-                  transition-transform duration-300 hover:scale-110
-                  ${badge.iconBg}
-                `}
-              >
-                <badge.icon 
-                  className={`w-7 h-7 md:w-5 md:h-5 ${badge.iconColor}`}
-                />
-              </div>
-
-              {/* Title - Colored on mobile */}
-              <h3 
-                className={`
-                  font-heading font-bold mb-2 md:mb-1 
-                  text-base md:text-[15px] leading-snug md:leading-tight
-                  ${badge.titleColor}
-                `}
-              >
-                {badge.title}
-              </h3>
-
-              {/* Description - Colored on mobile */}
-              <p 
-                className={`
-                  text-sm md:text-[12px] leading-relaxed md:leading-tight 
-                  line-clamp-3 md:line-clamp-2 font-medium md:font-normal
-                  ${badge.descColor}
-                `}
-              >
-                {badge.description}
-              </p>
-            </div>
+            <BadgeCard key={index} badge={badge} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function BadgeCard({ badge }: { badge: typeof badges[0] }) {
+  return (
+    <div
+      className={`
+        flex flex-col items-center text-center p-6 md:p-4
+        rounded-xl md:rounded-lg shadow-md md:shadow-sm 
+        transition-all duration-300 hover:shadow-xl md:hover:shadow-lg
+        bg-white border-t-4 md:border-t-4 md:border-t-transparent
+        ${badge.borderColor}
+      `}
+    >
+      {/* Icon Container - Larger & Colored on mobile */}
+      <div 
+        className={`
+          flex items-center justify-center mb-4 md:mb-3
+          w-16 h-16 md:w-11 md:h-11 rounded-full
+          transition-transform duration-300 hover:scale-110
+          ${badge.iconBg}
+        `}
+      >
+        <badge.icon 
+          className={`w-7 h-7 md:w-5 md:h-5 ${badge.iconColor}`}
+        />
+      </div>
+
+      {/* Title - Colored on mobile */}
+      <h3 
+        className={`
+          font-heading font-bold mb-2 md:mb-1 
+          text-base md:text-[15px] leading-snug md:leading-tight
+          ${badge.titleColor}
+        `}
+      >
+        {badge.title}
+      </h3>
+
+      {/* Description - Colored on mobile */}
+      <p 
+        className={`
+          text-sm md:text-[12px] leading-relaxed md:leading-tight 
+          line-clamp-3 md:line-clamp-2 font-medium md:font-normal
+          ${badge.descColor}
+        `}
+      >
+        {badge.description}
+      </p>
+    </div>
   );
 }
