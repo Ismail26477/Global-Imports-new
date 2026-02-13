@@ -82,8 +82,8 @@ export function HeroSlider() {
   <div className="container mx-auto px-4">
     <div className="w-full sm:max-w-2xl">
 
-            {/* Badge - Mobile Only */}
-            <span className="inline-block sm:hidden px-3 py-1.5 bg-[#D6A85A] text-[#5a3d26] rounded-sm text-[12px] font-semibold mb-4 tracking-wide shadow-md">
+            {/* Badge */}
+            <span className="inline-block px-2 py-1 bg-[#D6A85A]/20 text-[#D6A85A] rounded-full text-[11px] sm:text-sm font-medium mb-3">
               Trusted by 500+ Businesses
             </span>
 
