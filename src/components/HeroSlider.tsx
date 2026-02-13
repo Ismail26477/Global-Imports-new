@@ -61,6 +61,15 @@ export function HeroSlider() {
   return (
     <section className="relative h-[75vh] sm:h-[75vh] md:h-screen overflow-hidden">
 
+      {/* Mobile Header - Only on Mobile */}
+      <div className="md:hidden absolute top-0 left-0 right-0 z-20 bg-gradient-to-b from-black/60 to-transparent pt-4 px-4 pb-8">
+        <div className="container mx-auto">
+          <h2 className="text-2xl font-heading font-bold text-[#D6A85S] text-center">
+            Global Imports
+          </h2>
+        </div>
+      </div>
+
       {/* SLIDER */}
       <div
         className="flex h-full transition-transform duration-1000 ease-in-out"
@@ -78,7 +87,7 @@ export function HeroSlider() {
       </div>
 
       {/* CONTENT */}
-<div className="absolute inset-0 z-10 flex items-end pb-28 sm:items-center sm:pb-0">
+<div className="absolute inset-0 z-10 flex items-end pb-28 sm:items-center sm:pb-0 pt-20 md:pt-0">
   <div className="container mx-auto px-4">
     <div className="w-full sm:max-w-2xl">
 
