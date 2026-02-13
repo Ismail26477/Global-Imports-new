@@ -1,4 +1,74 @@
 import { Shield, Award, Globe, Truck } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+// Mobile-only CSS animations for connecting lines and glowing dot
+const animationStyles = `
+  @media (max-width: 767px) {
+    @keyframes drawLine {
+      from {
+        stroke-dashoffset: 1000;
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes glowDot {
+      0%, 10% {
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      85% {
+        opacity: 1;
+      }
+      90%, 100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes moveDot {
+      0%, 10% {
+        offset-distance: 0%;
+      }
+      90%, 100% {
+        offset-distance: 100%;
+      }
+    }
+
+    .line-1 {
+      animation: drawLine 1s ease-in-out 0.3s forwards;
+    }
+
+    .line-2 {
+      animation: drawLine 1s ease-in-out 1.2s forwards;
+    }
+
+    .line-3 {
+      animation: drawLine 1s ease-in-out 2.1s forwards;
+    }
+
+    .dot-1 {
+      animation: moveDot 0.8s ease-in-out 0.6s forwards;
+      offset-path: path('M 0,0 Q 10,15 0,30');
+    }
+
+    .dot-2 {
+      animation: moveDot 0.8s ease-in-out 1.5s forwards;
+      offset-path: path('M 0,0 Q 10,15 0,30');
+    }
+
+    .dot-3 {
+      animation: moveDot 0.8s ease-in-out 2.4s forwards;
+      offset-path: path('M 0,0 Q 10,15 0,30');
+    }
+
+    .glow-effect {
+      filter: drop-shadow(0 0 6px #8B5E3C) drop-shadow(0 0 12px #8B5E3C);
+    }
+  }
+`;
 
 const badges = [
   {
@@ -44,29 +114,106 @@ const badges = [
 ];
 
 export function TrustBadges() {
+  const svgRef = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    // Inject animation styles
+    const style = document.createElement('style');
+    style.textContent = animationStyles;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
     <section className="py-8 md:py-8 bg-muted/50">
+      <style>{animationStyles}</style>
       <div className="container mx-auto px-4">
-        {/* Mobile Masonry Layout */}
-        <div className="grid grid-cols-2 gap-4 md:hidden">
-          {/* Box 1 - Top Left (Larger) */}
-          <div className="col-span-1 row-span-1">
-            <BadgeCard badge={badges[0]} />
-          </div>
+        {/* Mobile Flow Layout with Connecting Lines */}
+        <div className="md:hidden relative">
+          {/* SVG Connecting Lines - positioned absolutely behind cards */}
+          <svg
+            ref={svgRef}
+            className="absolute left-1/4 top-0 w-1/2 h-full pointer-events-none"
+            style={{ overflow: 'visible' }}
+          >
+            {/* Line from Card 1 to Card 2 */}
+            <path
+              className="line-1"
+              d="M 0 120 Q 30 160 0 200"
+              stroke="#8B5E3C"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="1000"
+            />
+            {/* Glowing Dot for Line 1 */}
+            <circle
+              className="dot-1 glow-effect"
+              r="5"
+              fill="#8B5E3C"
+              opacity="0"
+            />
 
-          {/* Box 2 - Top Right (Smaller, offset down) */}
-          <div className="col-span-1 row-span-1 pt-8">
-            <BadgeCard badge={badges[1]} />
-          </div>
+            {/* Line from Card 2 to Card 3 */}
+            <path
+              className="line-2"
+              d="M 0 320 Q 30 360 0 400"
+              stroke="#8B5E3C"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="1000"
+            />
+            {/* Glowing Dot for Line 2 */}
+            <circle
+              className="dot-2 glow-effect"
+              r="5"
+              fill="#8B5E3C"
+              opacity="0"
+            />
 
-          {/* Box 3 - Bottom Left (Smaller) */}
-          <div className="col-span-1 row-span-1">
-            <BadgeCard badge={badges[2]} />
-          </div>
+            {/* Line from Card 3 to Card 4 */}
+            <path
+              className="line-3"
+              d="M 0 520 Q 30 560 0 600"
+              stroke="#8B5E3C"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="1000"
+            />
+            {/* Glowing Dot for Line 3 */}
+            <circle
+              className="dot-3 glow-effect"
+              r="5"
+              fill="#8B5E3C"
+              opacity="0"
+            />
+          </svg>
 
-          {/* Box 4 - Bottom Right (Larger) */}
-          <div className="col-span-1 row-span-1">
-            <BadgeCard badge={badges[3]} />
+          {/* Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 relative z-10">
+            {/* Box 1 - Top Left */}
+            <div className="col-span-1 row-span-1">
+              <BadgeCard badge={badges[0]} />
+            </div>
+
+            {/* Box 2 - Top Right (offset down) */}
+            <div className="col-span-1 row-span-1 pt-8">
+              <BadgeCard badge={badges[1]} />
+            </div>
+
+            {/* Box 3 - Bottom Left */}
+            <div className="col-span-1 row-span-1">
+              <BadgeCard badge={badges[2]} />
+            </div>
+
+            {/* Box 4 - Bottom Right */}
+            <div className="col-span-1 row-span-1">
+              <BadgeCard badge={badges[3]} />
+            </div>
           </div>
         </div>
 
